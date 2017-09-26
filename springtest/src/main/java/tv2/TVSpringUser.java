@@ -60,6 +60,7 @@ class LgTV implements TV{
 // spring : factory method 패턴
 public class TVSpringUser {
 public static void main(String[] args) {
+	System.out.println("github1");	
 	ApplicationContext factory
 	= new ClassPathXmlApplicationContext
 	("tv2/tv.xml");
@@ -67,7 +68,6 @@ public static void main(String[] args) {
 	TV tv = (TV)factory.getBean("tv");
 	TV tv2 = (TV)factory.getBean("tv");
 	TV tv3 = (TV)factory.getBean("tv");
-	
 //	tv.powerOn();
 //	tv.volumeUp();
 //	tv.volumeDown();
