@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!--
+UserVO uservo = new UserVO("강사");
+//uservo.setName("강사");
+-->
+
+<!-- UserVO  매개변수 정의 생성자 호출
+: CONSTRUCTOR INJECTION
+ -->
+<!-- <bean id="uservo" class="user.UserVO" >
+	<constructor-arg name="name" value="강사" />
+</bean> -->
+
+<!-- UserVO 기본 생성자 호출
+: SETTER INJECTION
+ -->
+<!-- <bean id="uservo2" class="user.UserVO" >
+	<property name="name" value="학생" />
+</bean> -->
+
+<!-- 
+UserDAO userdao = new UserDAO();
+userdao.setUservo(UserVO객체)
+ -->
+
+
+<!-- setVo(UserVO vo) 메소드 -->
+<bean id="userdao" class="user.UserDAO" 
+autowire="byType">
+<!-- <property name="uservo" ref="u" /> -->
+</bean>
+
+
+<!-- 할인판매중 -->
+<bean id="userservice" 
+class="user.UserServiceSales" autowire="byType">
+<!-- <property name="dao" ref="userdao" />  -->
+</bean> 
+
+<!-- 같은 이름의 bean -->
+<bean id="uservo3" class="user.UserVO">
+	<property name="name" value="새로운네임2" />
+</bean>
+<import resource="user_add.xml"/>
+
+</beans>
+
+
+
+

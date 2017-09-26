@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+
+	xsi:schemaLocation=
+	"http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	
+	http://www.springframework.org/schema/aop   
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+<bean id="aopTarget" class="aop.AOPTarget1" />
+<bean id="aopTarget2" class="aop.AOPTarget2" />
+<bean id="aopAspect1" class="aop.AOPAspect" />
+
+<bean id="aopTarget3" class="aop.test1.test2.AOPTarget3" />
+
+<!-- 공통관심사클래스 :aop.AOPAspect클래스
+     핵심관심사클래스 :(public * aop..*(..)) , 
+     메소드 :o=> targetMethod 이름
+ 위치 : 메소드호출전:beforeMethod 실행
+     ,후: afterMethod 실행(실제 자바소스구현 메소드이름)   -->
+<aop:config >
+	<aop:pointcut 
+	expression="execution (public * aop..*(..))" 
+	id="targetMethod"/>
+	<aop:aspect id="aopAspect"  ref="aopAspect1" >
+		<!--  <aop:before 
+		 pointcut-ref="targetMethod" 
+		 method="beforeMethod"/> -->
+		  
+		<!--  <aop:after pointcut-ref="targetMethod" 
+		 method="afterMethod"/>	
+		-->
+		 
+		 <aop:after-returning pointcut-ref="targetMethod"
+		 method="afterMethod" returning="r"/>
+		 
+		 <aop:around pointcut-ref="targetMethod"
+		 method="aroundMethod" />
+	 
+	</aop:aspect>
+</aop:config>
+
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<bean id = "testService" class="test.TestServiceImpl">
+	<property name="dao" ref="dao"/>
+</bean>
+<bean id="dao" class ="test.TestDAO">
+	<property name="vo" ref = "vo"/>
+</bean>
+<bean id="vo" class = "test.TestVO">
+	<property name="member1" value="test1"/>
+	<property name="member2" value="test2"/>
+</bean> -->

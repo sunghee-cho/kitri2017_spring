@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- UserVO 객체 5개 생성:List, set , Map -->
+<bean id="vo1" class="user.UserVO">
+	<property name="name" value="홍길동" />
+</bean>
+<bean id="vo2" class="user.UserVO">
+	<property name="name" value="김대한" />
+</bean>
+<bean id="vo3" class="user.UserVO">
+	<property name="name" value="박민국" />
+</bean>
+<bean id="vo4" class="user.UserVO">
+	<property name="name" value="홍만세" />
+</bean>
+<bean id="vo5" class="user.UserVO">
+	<property name="name" value="이자바" />
+</bean>
+
+<bean id="userDAO" class="user.UserDAO">
+	<property name="list" >
+		<list>
+			<ref bean="vo1"/>
+			<ref bean="vo2"/>
+			<ref bean="vo3"/>
+			<ref bean="vo4"/>
+			<ref bean="vo5"/>			
+		</list>
+	</property>
+	<property name="set">
+		<set>
+			<ref bean="vo1"/>
+			<ref bean="vo2"/>
+			<ref bean="vo3"/>
+			<ref bean="vo4"/>
+			<ref bean="vo5"/>					
+		</set>
+	</property>
+<!-- UserDAO : 
+HashMap<String, UserVO> 변수, setMap(), getMap() -->	
+<!-- UserSERVICE , UserServiceGeneral, UserServiceSales: 
+HashMap<String, UserVO> mapUser(); -->
+<!-- UserCollectionTest 
+HashMap<String , UserVO> map = service.mapUser(); 
+반복 조회
+-->	
+	<property name="map">
+		<map>
+			<entry key="v1"><ref bean="vo1" /></entry>
+			<entry key="v2"><ref bean="vo2" /></entry>
+			<entry key="v3"><ref bean="vo3" /></entry>
+			<entry key="v4"><ref bean="vo4" /></entry>
+			<entry key="v5"><ref bean="vo5" /></entry>
+		</map>
+	</property>
+</bean>
+
+<bean id="userService" class="user.UserServiceGeneral">
+	<property name="dao" ref="userDAO" />
+</bean>
+
+</beans>
+
+

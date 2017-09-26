@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+<!-- boardannotation 패키지내부 @  찾아라  -->
+<context:component-scan 
+base-package="boardannotation" />
+
+<!-- 
+<bean id="boardService" class="board.BoardService1">
+	<property name="boardDAO" ref="boardDAO" />
+</bean>
+-->
+
+<bean id="boardDAO2" class="boardannotation.BoardDAO" />
+
+
+<bean id="boardVO" class="boardannotation.BoardVO">
+	<property name="seq" value="1" />
+	<property name="title" value="스프링시작" />	
+	<property name="contents" value="스프링 내부 이해하기 중" />
+	<property name="writer" value="반장" />		
+</bean>
+
+
+</beans>
+
+
+
+
+
+

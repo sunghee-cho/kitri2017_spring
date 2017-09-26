@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="empVO" class="emp.EmpVO">
+	<property name="id" value="1005" />
+	<property name="name" value="박역량" />
+	<property name="role" value="사원" />
+	<property name="salary" value="1000" />
+	<property name="hiredate" value="2013/02/03" />
+	<property name="deptNo"  value="80" />	
+</bean>
+
+<bean id="empVO1" class="emp.EmpVO">
+	<property name="id" value="1006" />
+	<property name="name" value="나길동" />
+	<property name="role" value="대리" />
+	<property name="salary" value="1000" />
+	<property name="hiredate" value="2013/02/03" />
+	<property name="deptNo"  value="80" />	
+</bean>
+
+<bean id="empVO2" class="emp.EmpVO">
+	<property name="id" value="1007" />
+	<property name="name" value="최민국" />
+	<property name="role" value="과장" />
+	<property name="salary" value="1000" />
+	<property name="hiredate" value="2013/02/03" />
+	<property name="deptNo"  value="80" />	
+</bean>
+
+<bean id="empDAO" class="emp.EmpDAO" >
+	<property name="list">
+		<list>
+			<ref bean="empVO" />
+			<ref bean="empVO1" />
+			<ref bean="empVO2" />
+		</list>
+	</property>
+</bean>
+
+<bean id="empService" class="emp.EmpServiceImpl" >
+	<property name="empDAO" ref="empDAO" />
+	<property name="empVO" ref="empVO" />
+</bean>
+</beans>

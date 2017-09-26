@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+<bean id="dog1" class="aopanimal.Dog" />
+<bean id="cat1" class="aopanimal.Cat" />
+<bean id="rab1" class="aopanimal.Rabbit" />
+
+<bean id="ad" class="aopanimal.AnimalAdvice" />
+
+<aop:config>
+	<aop:pointcut 
+	expression=
+	"execution (public String aopanimal.*.*(..))" 
+	id="pc"/>
+	<aop:aspect id="ad" ref="ad" >
+		<aop:around method="a" pointcut-ref="pc"/>
+	</aop:aspect>
+</aop:config>
+</beans>
+
+
+
+
+
+

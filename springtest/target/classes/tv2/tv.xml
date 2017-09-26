@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- tv2.SamsungTV 객체 생성 
+SamsungTV tv = new SamsungTV();
+tv.a();자동 호출
+
+tv.powerOn();==>사용자호출
+....
+tv.c(); g/c자동호출
+-->
+<bean id="tv" class="tv2.LgTV" scope="singleton" />
+
+</beans>
+
+
+
+
+
+
+
+

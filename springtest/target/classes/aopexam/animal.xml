@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+<!-- 타겟들 객체 생성 태그ㅡ -->
+<bean id="dog1" class="aopexam.Dog" />
+<bean id="cat1" class="aopexam.Cat" />
+<bean id="rab1" class="aopexam.Rabbit" />
+<!-- 어드바이스 객체 생성 태그ㅡ -->
+<bean id="animal" class="aopexam.AnimalAdvice" />
+<!-- aop 설정 태그ㅡ -->
+<aop:config >
+	<aop:pointcut 
+	expression="execution (public String aopexam.*.eat())" 
+	id="pt"/>
+	<aop:aspect id="adv"  ref="animal" >
+		<aop:around method="around" pointcut-ref="pt"/>
+	</aop:aspect>
+</aop:config>
+</beans>
+
+
+
+
+
