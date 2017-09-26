@@ -63,7 +63,7 @@ public static void main(String[] args) {
 //<<<<<<< HEAD
 	System.out.println("github_원본1");
 //=======
-	System.out.println("github3");	
+	System.out.println("github 복사본 4");	
 //>>>>>>> branch 'master' of https://github.com/sunghee-cho/kitri2017_spring.git
 	ApplicationContext factory
 	= new ClassPathXmlApplicationContext
